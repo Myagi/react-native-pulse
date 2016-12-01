@@ -71,17 +71,17 @@ class Pulse extends Component {
   render(){
     if(this.state.started){
       return (
-        <View style={[styles.container, {top: this.state.top}]}>
-          <View style={[styles.pulseContainer, {width: this.state.maxDiameter, height: this.state.maxDiameter}]}>
+        <View style={[styles.container, {top: this.state.top}]} onPress={this.props.onPress}>
+          <View style={[styles.pulseContainer, {width: this.state.maxDiameter, height: this.state.maxDiameter}]} onPress={this.props.onPress}>
             {this.state.pulses.map((pulse) => {
-              return <View key={pulse.pulseKey} style={[styles.pulse, {backgroundColor: this.state.color, width: pulse.diameter, height: pulse.diameter, opacity: pulse.opacity, borderRadius: pulse.diameter / 2, left: pulse.left, top: pulse.centerOffset, left: pulse.centerOffset} ]}></View>;
+              return <View key={pulse.pulseKey} onPress={this.props.onPress} style={[styles.pulse, {backgroundColor: this.state.color, width: pulse.diameter, height: pulse.diameter, opacity: pulse.opacity, borderRadius: pulse.diameter / 2, left: pulse.left, top: pulse.centerOffset, left: pulse.centerOffset} ]}></View>;
             })}
           </View>
         </View>
       )
     } else {
       return (
-        <View style={styles.container}>
+        <View style={styles.container} onPress={this.props.onPress}>
         </View>
       );
     }
